@@ -2,11 +2,33 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/signup">Signup</router-link> |
+      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/event">Event</router-link> |
+      <button @click="checkUser">CheckUser</button>
+      <button @click="logOut">Logout</button>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+import * as firebase from './api/firebase'
+
+export default {
+  name:'App',
+  methods:{
+    checkUser(){
+      console.log(firebase.getUser())
+    },
+    logOut(){
+      firebase.signOut()
+    }
+  }
+}
+</script>
+
 
 <style>
 #app {

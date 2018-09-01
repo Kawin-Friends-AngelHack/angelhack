@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="event">
 
   </div>
 </template>
@@ -8,7 +8,7 @@
 
 
 export default {
-  name: 'home',
+  name: 'Event',
   methods:{
   },
   created(){

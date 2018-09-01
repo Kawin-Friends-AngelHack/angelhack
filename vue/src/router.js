@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import * as firebase from '../api/firebase'
+import * as firebase from './api/firebase'
 
 import Router from 'vue-router'
 import Home from './views/Home.vue'

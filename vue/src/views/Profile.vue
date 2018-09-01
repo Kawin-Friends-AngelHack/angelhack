@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="profile">
 
   </div>
 </template>
@@ -7,8 +7,16 @@
 <script>
 
 export default {
-  name: 'home',
+  name: 'Profile',
+  data(){
+    return{
+
+    }
+  },
   methods:{
+    addProfile(){
+
+    }
   },
   created(){
   }
