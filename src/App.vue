@@ -21,7 +21,7 @@
             <a class="nav-link c-nav-link" href="#">Contact us</a>
           </li>
           <li>
-            <div class="nav-link c-nav-link c-login-link" v-if="isLogin" @click="logOut">Logout</div>
+            <div class="nav-link c-nav-link c-login-link logout-btn" v-if="isLogin" @click="logOut">Logout</div>
             <router-link v-else class="nav-link c-nav-link c-login-link" to="/login">Login</router-link>
 
           </li>
@@ -34,7 +34,7 @@
 
 <script>
 import * as firebase from './api/firebase'
-
+import router from './router'
 export default {
   name:'App',
   data(){
@@ -53,6 +53,8 @@ export default {
     },
     logOut(){
       firebase.signOut()
+      this.isLogin=false
+      router.push('home')
     }
   },
   async created(){
@@ -122,6 +124,8 @@ export default {
     border-radius: 24px;
 }
 
-
+.logout-btn{
+  cursor:pointer;
+}
 
 </style>

@@ -55,8 +55,12 @@
           </span>
         </div>
       </div>
+
+      
     </div>
+    
     </div>
+    <router-link class="btn btn-primary" to="/event" v-if="isReady">You're ready to hangout!!!</router-link>
   </div>
 </template>
 
@@ -72,6 +76,7 @@ export default {
   },
   data(){
     return{
+      uid:'',
       proposedInterest:{
         // name:'',
         // score:0
@@ -107,6 +112,11 @@ export default {
       ]
     }
   },
+  computed:{
+    isReady(){
+      return this.selfInterest.length>4
+    }
+  },
   methods:{
     selectData(interest){
       this.proposedInterest['name']=interest.value
@@ -128,7 +138,7 @@ export default {
     async addToDB(){
       try{
         await back.addInterestToDB({
-          'u_id':firebase.getUser().uid,
+          'u_id':this.uid,
           'interest':this.proposedInterest.name,
           'rate':this.proposedInterest.score
         })
@@ -138,8 +148,9 @@ export default {
       
     }
   },
-  created(){
-
+  async created(){
+    let result = await firebase.getUser()
+    this.uid = result.uid
   }
 }
 </script>

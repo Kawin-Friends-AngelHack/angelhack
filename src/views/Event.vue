@@ -196,11 +196,13 @@ export default {
         uid:selfUID
       })
 
+
       this.onUsers = [result.data]
     }
   },
   async created(){
-    let uid = firebase.getUser().uid
+    let result = await firebase.getUser()
+    let uid = result.uid
     this.isLoading=true
     await this.fillUsersData(uid)
     await this.fillSelf(uid)
