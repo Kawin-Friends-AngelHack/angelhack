@@ -1,0 +1,13 @@
+.c-signup-container {
+    margin: 80px auto;
+}
+
+.c-submit-button {
+    display: flex;
+    justify-content: center;
+}
+
+.c-text_copy {
+    text-align: center;
+    margin: 24px auto;
+}
