@@ -78,7 +78,7 @@ export const getEvents = async (params)=>{
     try {
         event = await axios({
             method:'post',
-            url:'${root}/events',
+            url:`${root}/events`,
             data:params
         })
     }catch(error){
