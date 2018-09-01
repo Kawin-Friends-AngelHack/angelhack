@@ -1,0 +1,73 @@
+.c-input-container {
+    margin: 24px auto;
+}
+
+.c-text_copy {
+    text-align: center;
+    margin: 24px auto;
+}
+
+.c-input-preference {
+    height: 38px;
+}
+
+.c-badge {
+    margin-left: 8px;
+    background-color: #237804;
+    border:#237804;
+    border-radius: 50%;
+    font-weight: normal;
+}
+
+.c-pref-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.c-pref-item {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.c-btn-rating-1 {
+    background-color: #b7eb8f;
+    border: #b7eb8f;
+    border-radius: 50%;
+
+}
+
+.c-btn-rating-2 {
+    background-color: #95de64;
+    border: #95de64;
+    border-radius: 50%;
+}
+
+.c-btn-rating-3 {
+    background-color: #52c41a;
+    border: #52c41a;
+    border-radius: 50%;
+}
+
+.c-btn-rating-4 {
+    background-color: #237804;
+    border:#237804;
+    border-radius: 50%;
+}
+
+.c-btn-rating-5 {
+    background-color: #135200;
+    border: #135200;
+    border-radius: 50%;
+}
+
+.btn:hover {
+    background-color: #092b00;
+    border: #092b00;
+    box-shadow: 0 2px 4px grey;
+}
+
+.btn {
+    width: 36px;
+    height: 36px; 
+}

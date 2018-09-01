@@ -1,0 +1,30 @@
+.c-signup-container {
+    margin: 80px auto;
+}
+
+.c-submit-button {
+    display: flex;
+    justify-content: center;
+}
+
+.c-text_copy {
+    text-align: center;
+    margin: 24px auto;
+}
+
+.c-label {
+    display: none;
+}
+
+.btn {
+    background-color: #00882B;
+    border:#00882B;
+    border-radius: 24px;
+    margin-right: 16px;
+}
+
+.btn:hover {
+    background-color: #389e0d;
+    border: #389e0d;
+    box-shadow: 0 2px 4px grey;
+}
