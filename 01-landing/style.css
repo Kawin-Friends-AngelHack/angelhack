@@ -1,0 +1,16 @@
+.jumbotron {
+    margin-bottom: 0px;
+}
+
+.c-jb-bg {
+    background-size: cover;
+    background-origin: content-box;
+    background-position: center;
+    /* background-image: url("https://livehighlandsquare.com/wp-content/uploads/sites/63/2018/02/group-friends-outside-sitting-laughting-drinking-outdoor-concert-venue.jpg"); */
+    
+}
+
+.c-text_copy {
+    text-align: center;
+    margin: 24px auto;
+}
