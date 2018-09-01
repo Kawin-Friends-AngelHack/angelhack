@@ -10,6 +10,7 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressSanitizer())
+app.use(express.static('vue/dist'))
 route(app)
 
 

@@ -1,6 +1,21 @@
 
 const mysql = require('promise-mysql')
-const config = require('./config')
+let config = {}
+
+try{
+    config = require('./config')
+}catch(e){
+    config.mysql = {
+        host: process.env.MYSQL_HOST,
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DATABASE,
+        connectionLimit: 10
+    }
+}
+
+
+
 
 
 pool = mysql.createPool(config.mysql)

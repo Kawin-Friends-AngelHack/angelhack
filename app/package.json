@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "vue": "cd vue && npm run build",
-    "start": "cd vue && npm run build & nodemon index.js",
+    "start": "cd vue && npm run build && cd .. && nodemon -x 'node index.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
