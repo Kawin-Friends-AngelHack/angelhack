@@ -1,0 +1,35 @@
+.c-main-container {
+    margin: 60px auto;
+}
+
+.c-profile-image {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+}
+
+.c-card-event {
+    width: auto;
+    margin-bottom: 24px;
+}
+
+.c-ac-image {
+    width: auto;
+    height: 160px;
+    background-size: contain;
+}
+
+.c-friend-list, .c-goingwith-list {
+    margin: 16px auto; 
+}
+
+.c-info-image {
+    width: 320px;
+    height: 240px;
+    border-radius: 8px; 
+}
+
+.c-card-text {
+    margin: 16px auto;
+}
