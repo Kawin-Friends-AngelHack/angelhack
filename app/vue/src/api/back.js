@@ -1,6 +1,20 @@
 import axios from 'axios'
 
 
+export const getUsers = async (params)=>{
+    let users
+    try{
+        users = await axios({
+             method:'get',
+             url:`http://localhost:3000/users/${params.uid}`
+         })
+     }catch(error){
+         console.log(error)
+     }
+     return users
+}
+
+
 export const getUser = async (params)=>{
     let user
     try{
