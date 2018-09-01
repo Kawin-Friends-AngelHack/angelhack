@@ -1,12 +1,13 @@
 import axios from 'axios'
 
+const root = 'https://painaidee-backend.herokuapp.com'
 
 export const getUsers = async (params)=>{
     let users
     try{
         users = await axios({
              method:'get',
-             url:`http://localhost:3000/users/${params.uid}`
+             url:`${root}/users/${params.uid}`
          })
      }catch(error){
          console.log(error)
@@ -20,7 +21,7 @@ export const getUser = async (params)=>{
     try{
        user = await axios({
             method:'get',
-            url:`http://localhost:3000/user/${params.uid}`
+            url:`${root}/user/${params.uid}`
         })
     }catch(error){
         console.log(error)
@@ -32,7 +33,7 @@ export const addUserToDB = async (params)=>{
     try{
        await axios({
             method:'post',
-            url:'http://localhost:3000/user',
+            url:'${root}/user',
             data:params    
         })
     }catch(error){
@@ -47,7 +48,7 @@ export const getInterest = async ()=>{
     try {
         interest = await axios({
             method:'get',
-            url:'http://localhost:3000/interest'
+            url:'${root}/interest'
         })
     }catch(error){
         alert(error)
@@ -61,7 +62,7 @@ export const addInterestToDB = async (params)=>{
     try {
         await axios({
             method:'post',
-            url:'http://localhost:3000/user/interest',
+            url:'${root}/user/interest',
             data: params
         })
     }catch(error){
@@ -77,7 +78,7 @@ export const getEvents = async (params)=>{
     try {
         event = await axios({
             method:'post',
-            url:'http://localhost:3000/events',
+            url:'${root}/events',
             data:params
         })
     }catch(error){
@@ -94,7 +95,7 @@ export const getEachEvent = async (params)=>{
     try {
         event = await axios({
             method:'get',
-            url:`http://localhost:3000/event/${params.id}`,
+            url:`${root}/event/${params.id}`,
             data:params
         })
     }catch(error){
