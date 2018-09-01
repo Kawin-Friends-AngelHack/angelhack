@@ -13,28 +13,48 @@
 
 <script>
 import * as firebase from '../api/firebase'
+import * as back from '../api/back'
+
+import router from '../router'
+
 
 export default {
   name: 'Signup',
   data(){
     return {
       email:'',
-      password:''
+      password:'',
+      name:'test1',
+      displayName:'testdisplay',
+      dateOfBirth:'',
+      gender:'m'
     }
   },
   methods:{
     async signUp(){
 
-      let user
+      let signUpUser
       try{
-        user = await firebase.signUp(this.email,this.password)
+        signUpUser = await firebase.signUp(this.email,this.password)
       }catch(err){
         alert(err)
         this.email=''
         this.password=''
+        return
       }
 
-      console.log(user.user.uid)
+      try{
+        await back.addUserToDB({
+          'u_id':signUpUser.user.uid,
+          'name':this.name,
+          'gender':this.gender
+        })
+      }catch(err){
+        alert(err)
+        return
+      }
+
+      router.push('profile')
     }
   },
   created(){

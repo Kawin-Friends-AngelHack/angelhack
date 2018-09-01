@@ -13,6 +13,7 @@
 
 <script>
 import * as firebase from '../api/firebase'
+import router from '../router'
 
 export default {
   name: 'Login',
@@ -35,7 +36,8 @@ export default {
       }
 
       console.log(user.uid)
-      console.log(firebase.getUser())
+      // console.log(firebase.getUser())
+      router.push('event')
     }
   },
   created(){
