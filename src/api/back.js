@@ -33,7 +33,7 @@ export const addUserToDB = async (params)=>{
     try{
        await axios({
             method:'post',
-            url:'${root}/user',
+            url:`${root}/user`,
             data:params    
         })
     }catch(error){
@@ -48,7 +48,7 @@ export const getInterest = async ()=>{
     try {
         interest = await axios({
             method:'get',
-            url:'${root}/interest'
+            url:`${root}/interest`
         })
     }catch(error){
         alert(error)
@@ -62,7 +62,7 @@ export const addInterestToDB = async (params)=>{
     try {
         await axios({
             method:'post',
-            url:'${root}/user/interest',
+            url:`${root}/user/interest`,
             data: params
         })
     }catch(error){
@@ -95,7 +95,7 @@ export const getEachEvent = async (params)=>{
     try {
         event = await axios({
             method:'get',
-            url:`${root}/event/${params.id}`,
+            url:`${root}/event/${params.name}`,
             data:params
         })
     }catch(error){

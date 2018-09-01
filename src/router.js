@@ -50,10 +50,9 @@ let router = new Router({
   ]
 })
 
-router.beforeEach((to,from,next)=>{
-  let currentUser = firebase.getUser()
+router.beforeEach(async (to,from,next)=>{
+  let currentUser = await firebase.getUser()
   let requireAuth = to.matched.some(record => record.meta.requireAuth)
-
   if (requireAuth && !currentUser) next('login')
   else next()
 })

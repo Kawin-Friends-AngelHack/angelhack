@@ -31,6 +31,19 @@ export const signOut = async ()=>{
     })
 }
 
-export const getUser = ()=>{
-    return firebase.auth().currentUser
+export const getUser = async  ()=>{
+    let user = await firebase.auth().currentUser
+    return user
 }
+
+export const getUserWhenInit = async ()=>{
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+           return user
+        } else {
+            return null
+        }
+    });
+}
+
+

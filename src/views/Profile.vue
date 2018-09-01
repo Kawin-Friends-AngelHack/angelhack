@@ -1,19 +1,61 @@
 <template>
   <div class="profile">
-    <autocomplete
-      ref="interest"
-      :source="fullInterest"
-      resultsValue="name"
-      @selected="selectData"
-    >
-    </autocomplete>
-
-    <button @click="changeScoreAndAddData(1)"></button>
-    <div
-      v-for="item in selfInterest"
-      :key="item.name"
-    >
-      {{item.name}} : {{item.score}}
+    <div class="container c-main-container c-input-container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <h3 class="c-text_copy">What are your interests ?</h3>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-4 c-input-preference">
+        <div class="input-group mb-3">
+          <!-- <input type="text" class="form-control" placeholder="Please type any topic ..." aria-label="preference's username"
+            aria-describedby="button-addon2"> -->
+          <autocomplete
+            ref="interest"
+            :source="fullInterest"
+            resultsValue="name"
+            @selected="selectData"
+          >
+          </autocomplete>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <h4 class="c-text_copy">How much do you like it ?</h4>
+    </div>
+    <div class="row justify-content-center">
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="mr-2" role="group" aria-label="First group">
+          <button type="button" class="btn btn-secondary c-btn-rating-1" @click="changeScoreAndAddData(1)">1</button>
+          <button type="button" class="btn btn-secondary c-btn-rating-2" @click="changeScoreAndAddData(2)">2</button>
+          <button type="button" class="btn btn-secondary c-btn-rating-3" @click="changeScoreAndAddData(3)">3</button>
+          <button type="button" class="btn btn-secondary c-btn-rating-4" @click="changeScoreAndAddData(4)">4</button>
+          <button type="button" class="btn btn-secondary c-btn-rating-5" @click="changeScoreAndAddData(5)">5</button>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <h4 
+        class="c-text_copy" 
+        style="border-top:1px solid grey;padding:24px 120px; padding-bottom:0px;">
+          Your interests
+      </h4>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-8 c-pref-container">
+        <div 
+          class="c-text_copy c-pref-item"
+          v-for="(item,index) in selfInterest"
+          :key="index"
+        >
+          {{item.name}}
+          <span class="badge badge-secondary c-badge">
+            {{item.score}}
+          </span>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -101,3 +143,79 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.c-input-container {
+    margin: 24px auto;
+}
+
+.c-text_copy {
+    text-align: center;
+    margin: 24px auto;
+}
+
+.c-input-preference {
+    height: 38px;
+}
+
+.c-badge {
+    margin-left: 8px;
+    background-color: #237804;
+    border:#237804;
+    border-radius: 50%;
+    font-weight: normal;
+}
+
+.c-pref-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.c-pref-item {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.c-btn-rating-1 {
+    background-color: #b7eb8f;
+    border: #b7eb8f;
+    border-radius: 50%;
+
+}
+
+.c-btn-rating-2 {
+    background-color: #95de64;
+    border: #95de64;
+    border-radius: 50%;
+}
+
+.c-btn-rating-3 {
+    background-color: #52c41a;
+    border: #52c41a;
+    border-radius: 50%;
+}
+
+.c-btn-rating-4 {
+    background-color: #237804;
+    border:#237804;
+    border-radius: 50%;
+}
+
+.c-btn-rating-5 {
+    background-color: #135200;
+    border: #135200;
+    border-radius: 50%;
+}
+
+.btn:hover {
+    background-color: #092b00;
+    border: #092b00;
+    box-shadow: 0 2px 4px grey;
+}
+
+.btn {
+    width: 36px;
+    height: 36px; 
+}
+</style>
