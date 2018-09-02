@@ -60,6 +60,7 @@ export default {
         alert(err)
         this.email=''
         this.password=''
+        location.reload()
       }
 
       console.log(user.uid)

@@ -77,6 +77,7 @@ export default {
         alert(err)
         this.email=''
         this.password=''
+        location.reload()
         return
       }
 
@@ -88,6 +89,7 @@ export default {
         })
       }catch(err){
         alert(err)
+        location.reload()
         return
       }
       this.changeLoginState(true)

@@ -12,7 +12,7 @@
           <!-- <input type="text" class="form-control" placeholder="Please type any topic ..." aria-label="preference's username"
             aria-describedby="button-addon2"> -->
           <autocomplete
-            ref="interest"
+            ref="autocomplete"
             :source="fullInterest"
             resultsValue="name"
             @selected="selectData"
@@ -142,6 +142,7 @@ export default {
       this.addToSelfInterest()
       await this.addToDB()
 
+      $('.autocomplete--clear').click()
     },
     async deleteInterest(interest){
       for (let i = 0; i < this.selfInterest.length; i++) {

@@ -147,7 +147,7 @@ export default {
 
       this.changeLoadingState(false)
     },
-    async changeBudget(){
+    async changeBudget(e){
       await this.getEvents()
     },
     async deleteUserOnUser(currentUser){
