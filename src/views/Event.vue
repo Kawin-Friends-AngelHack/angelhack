@@ -11,7 +11,7 @@
             >
               <button v-if="index!=0" type="button" class="btn btn-delete" @click="deleteUserOnUser(user)">X</button>
               <img :src="user.image" class="c-profile-image" />
-                {{user.name}}
+                {{user.name}} <span v-if="index==0">(You)</span>
             </li>
           </ul>
           <span class="c-text_copy">Your Friends</span>
@@ -89,7 +89,7 @@
                 <h5 class="card-title">Description</h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Place: {{event.location}}</li>
-                    <li class="list-group-item">Type: {{event.public}}</li>
+                    <li class="list-group-item">Type: {{event.event_type}}</li>
                     <li class="list-group-item">Interest: {{event.interest}}</li>
                 </ul>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -313,6 +313,10 @@ export default {
 .overflow{
   height:500px;
   overflow-y:auto;
+}
+
+.card-text{
+  color:grey;
 }
 </style>
 
