@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+    <spinner :show="isLoading"/>
     <nav class="navbar navbar-expand-lg navbar-light c-nav-bg">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,31 +33,39 @@
 </template>
 
 <script>
-import * as firebase from './api/firebase'
+import * as firebaseWrapper from './api/firebase'
 import router from './router'
+import { mapState,mapActions } from 'vuex'
+import Spinner from './components/spinner.vue'
+
 export default {
   name:'App',
-  data(){
-    return{
-      isLogin:false
-    }
+  components:{
+    Spinner
   },
+  computed:mapState([
+    'isLogin',
+    'isLoading'
+  ]),
   methods:{
+    ...mapActions([
+      'changeLoginState'
+    ]),
     async checkUser(){
-      let user = await firebase.getUser()
+      let user = await firebaseWrapper.getUser()
       if(user){
-        this.isLogin = true
+        this.changeLoginState(true)
       }else{
-        this.isLogin = false
+        this.changeLoginState(false)
       }
     },
     logOut(){
-      firebase.signOut()
-      this.isLogin=false
-      router.push('home')
-    }
+      firebaseWrapper.signOut()
+      this.changeLoginState(false)
+      router.push({name: 'home'})
+    },
   },
-  async created(){
+  created(){
     this.checkUser()
   }
 }

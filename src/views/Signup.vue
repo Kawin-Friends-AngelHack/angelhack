@@ -18,11 +18,16 @@
             </div>
             <div class="form-group">
                 <label for="dateOfBirth" class="c-label"  >Date Of Birth</label>
-                <input type="text" class="form-control" id="dateOfBirth" placeholder="Date of Birth" v-model="dateOfBirth">
+                <datepicker v-model="dateOfBirth" name="uniquename" :bootstrap-styling="true" placeholder="Date of Birth"></datepicker>
+                <!-- <input type="text" class="form-control" id="dateOfBirth" placeholder="Date of Birth" v-model="dateOfBirth"> -->
             </div>
             <div class="form-group">
                 <label for="gender" class="c-label"  >Gender</label>
-                <input type="text" class="form-control" id="gender" placeholder="Gender" v-model="gender">
+                <select v-model="gender" class="form-control">
+                  <option disabled value="">Gender</option>
+                  <option value="m">Male</option>
+                  <option value="f">Female</option>
+                </select>
             </div>
             <div class="c-submit-button">
               <input
@@ -39,8 +44,9 @@
 <script>
 import * as firebase from '../api/firebase'
 import * as back from '../api/back'
-
+import { mapActions } from 'vuex'
 import router from '../router'
+import Datepicker from 'vuejs-datepicker'
 
 
 export default {
@@ -54,9 +60,16 @@ export default {
       gender:''
     }
   },
+  components: {
+    Datepicker
+  },
   methods:{
+    ...mapActions([
+      'changeLoginState',
+      'changeLoadingState'
+    ]),
     async signUp(){
-
+      this.changeLoadingState(true)
       let signUpUser
       try{
         signUpUser = await firebase.signUp(this.email,this.password)
@@ -77,8 +90,9 @@ export default {
         alert(err)
         return
       }
-
+      this.changeLoginState(true)
       router.push('profile')
+      this.changeLoadingState(false)
     }
   },
   created(){

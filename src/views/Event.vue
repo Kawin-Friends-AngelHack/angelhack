@@ -42,7 +42,6 @@
                 </div>
     
           </div>
-          <div class="card overflow">
             <div class="card-body"
               v-for="(event,index) in events"
               :key="index"
@@ -62,7 +61,6 @@
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
 
@@ -104,7 +102,6 @@
           </div>
         </div>
       </div>
-      <spinner :show="isLoading"/>
     </div>
 
 </template>
@@ -112,16 +109,14 @@
 <script>
 import * as back from '../api/back'
 import * as firebase from '../api/firebase'
-import Spinner from '../components/spinner.vue'
+import { mapActions } from 'vuex'
+
 
 export default {
   name: 'Event',
-  components:{
-    Spinner
-  },
+  
   data(){
     return{
-      isLoading:false,
       event:{},
 
       budget:1000000,
@@ -131,8 +126,11 @@ export default {
     }
   },
   methods:{
+    ...mapActions([
+      'changeLoadingState'
+    ]),
     async openModal(event){
-      this.isLoading=true
+      this.changeLoadingState(true)
       let eventName = event['event_name']
       let result
 
@@ -147,7 +145,7 @@ export default {
 
       this.event = result.data
 
-      this.isLoading=false
+      this.changeLoadingState(false)
     },
     async changeBudget(){
       await this.getEvents()
@@ -158,6 +156,7 @@ export default {
       await this.getEvents()
     },
     async getEvents(){
+      
       let uid = this.onUsers.map(user=>user['u_id'])
       let budget = this.budget
 
@@ -174,6 +173,7 @@ export default {
       }
 
       this.events = result.data
+      
     },
     async addUserToOnUsers(user){
       this.onUsers.push(user)
@@ -201,13 +201,13 @@ export default {
     }
   },
   async created(){
+    this.changeLoadingState(true)
     let result = await firebase.getUser()
     let uid = result.uid
-    this.isLoading=true
     await this.fillUsersData(uid)
     await this.fillSelf(uid)
     await this.getEvents()
-    this.isLoading=false
+    this.changeLoadingState(false)
   },
   watch: {
     budget: function () {

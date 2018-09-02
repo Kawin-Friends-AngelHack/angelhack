@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const root = 'https://painaidee-backend.herokuapp.com'
+// const root = 'https://painaidee-backend.herokuapp.com'
+const root = 'http://localhost:3000'
 
 export const getUsers = async (params)=>{
     let users
@@ -56,6 +57,36 @@ export const getInterest = async ()=>{
     }
 
     return interest
+}
+
+export const getEachInterest = async (params)=>{
+    let interest
+    try {
+        interest = await axios({
+            method:'get',
+            url:`${root}/each/${params.uid}`
+        })
+    }catch(error){
+        alert(error)
+        throw error
+    }
+
+    return interest
+}
+
+export const deleteInterest = async (params)=>{
+    try {
+        await axios({
+            method:'post',
+            url:`${root}/user/interest/del`,
+            data: params
+        })
+    }catch(error){
+        alert(error)
+        throw error
+    }
+
+    return true
 }
 
 export const addInterestToDB = async (params)=>{

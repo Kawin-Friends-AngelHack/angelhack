@@ -33,6 +33,7 @@
 <script>
 import * as firebase from '../api/firebase'
 import router from '../router'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
@@ -43,8 +44,12 @@ export default {
     }
   },
   methods:{
+    ...mapActions([
+      'changeLoginState',
+      'changeLoadingState'
+    ]),
     async signIn(){
-
+      this.changeLoadingState(true)
       let user
       try{
         user = await firebase.signIn(this.email,this.password)
@@ -55,8 +60,10 @@ export default {
       }
 
       console.log(user.uid)
+      this.changeLoginState(true)
       // console.log(firebase.getUser())
       router.push('event')
+      this.changeLoadingState(false)
     }
   },
   created(){
