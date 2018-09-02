@@ -19,6 +19,9 @@
                 value="Sign in"
               >
             </div>
+            <div class="row">
+              <img class="img-center" src="../assets/login-btn.png">
+            </div>
             <div class="row justify-content-center">
               <div class="c-signup-container">
                 <span>First time here?</span> <router-link to="/signup" href="#" class="c-signup-link">Sign Up</router-link>
@@ -114,6 +117,11 @@ export default {
 
 .c-signup-container {
     margin: 16px auto;
+}
+
+.img-center{
+  width:200px;
+  margin:auto;
 }
 </style>
 
