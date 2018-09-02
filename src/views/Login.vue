@@ -21,7 +21,7 @@
             </div>
             <div class="row justify-content-center">
               <div class="c-signup-container">
-                <span>First time here?</span> <router-link to="/signup" href="#" class="c-signup-link"> Sign Up</router-link>
+                <span>First time here?</span> <router-link to="/signup" href="#" class="c-signup-link">Sign Up</router-link>
               </div>
             </div>
           </div>
