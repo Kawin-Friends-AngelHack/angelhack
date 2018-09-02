@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// const root = 'https://painaidee-backend.herokuapp.com'
-const root = 'http://localhost:3000'
+const root = 'https://painaidee-backend.herokuapp.com'
+// const root = 'http://localhost:3000'
 
 export const getUsers = async (params)=>{
     let users
